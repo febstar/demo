@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel Reservation Form</title>
+  <!-- Link Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Link Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,12 +17,12 @@
     }
 
     .container {
-      max-width: 500px;
+      max-width: 800px;
       margin: 20px auto;
-      padding: 20px;
-      background-color: #ffffff;
+      background-color: #f9f9f9;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
+      border-radius: 10px;
+      padding: 20px;
     }
 
     h1 {
@@ -44,6 +48,15 @@
       border-radius: 4px;
       box-sizing: border-box;
       font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #007bff;
     }
 
     select {
@@ -65,45 +78,243 @@
       padding: 10px 20px;
       border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     input[type="submit"]:hover {
       background-color: #0056b3;
     }
+
+    input[type="submit"]::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    input[type="submit"]:hover::before {
+      transform: translateX(0);
+    }
+
+    /* Additional CSS for enhanced design and animations */
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: -10px;
+      left: 10px;
+      background-color: #fff;
+      padding: 0 5px;
+      color: #007bff;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      border-color: #007bff;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #0056b3;
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .form-footer span {
+      color: #007bff;
+    }
+
+    .hotel-image {
+      background-image: url('hotel-image.jpg'); /* Replace with your hotel image URL */
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .block {
+      width: 80px;
+      height: 80px;
+      border-radius: 5px;
+      margin: 10px;
+      display: inline-block;
+    }
+
+    .blue-block {
+      background-color: #007bff;
+    }
+
+    .green-block {
+      background-color: #00a852;
+    }
+
+    .yellow-block {
+      background-color: #ffc107;
+    }
+
+    .purple-block {
+      background-color: #6f42c1;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .container {
+      animation: fadeIn 1s;
+    }
+
+    /* CNN-inspired design */
+    header {
+      background-color: #007bff;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 20px;
+    }
+
+    header h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    footer {
+      background-color: #007bff;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+      border-radius: 0 0 10px 10px;
+      margin-top: 20px;
+    }
+
+    /* Hover effects */
+    .block {
+      transition: transform 0.3s ease;
+    }
+
+    .block:hover {
+      transform: scale(1.1);
+    }
+
+    input[type="submit"] {
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
   </style>
 </head>
 <body>
+  <header>
+    <h2>Welcome to Our Hotel</h2>
+    <p>Book your stay now and experience luxury like never before!</p>
+  </header>
+
   <div class="container">
     <h1>Hotel Reservation Form</h1>
-    <form action="#" method="post">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
 
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
+    <div class="hotel-image"></div>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required>
+    <form id="reservation-form" method="post">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
 
-      <label for="check-in">Check-In Date</label>
-      <input type="date" id="check-in" name="check-in" required>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+      </div>
 
-      <label for="check-out">Check-Out Date</label>
-      <input type="date" id="check-out" name="check-out" required>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
 
-      <label for="room-type">Room Type</label>
-      <select id="room-type" name="room-type" required>
-        <option value="" disabled selected>Select room type</option>
-        <option value="single">Single Room</option>
-        <option value="double">Double Room</option>
-        <option value="suite">Suite</option>
-      </select>
+      <div class="form-group">
+        <label for="check-in">Check-In Date</label>
+        <input type="date" id="check-in" name="check-in" required>
+      </div>
 
-      <label for="special-requests">Special Requests</label>
-      <textarea id="special-requests" name="special-requests" placeholder="Enter any special requests..."></textarea>
+      <div class="form-group">
+        <label for="check-out">Check-Out Date</label>
+        <input type="date" id="check-out" name="check-out" required>
+      </div>
 
-      <input type="submit" value="Submit">
+      <div class="form-group">
+        <label for="room-type">Room Type</label>
+        <select id="room-type" name="room-type" required>
+          <option value="" disabled selected>Select room type</option>
+          <option value="single">Single Room</option>
+          <option value="double">Double Room</option>
+          <option value="suite">Suite</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="special-requests">Special Requests <i class="fas fa-info-circle" data-toggle="tooltip" title="Any specific requirements or preferences?"></i></label>
+        <textarea id="special-requests" name="special-requests" placeholder="Enter any special requests..."></textarea>
+      </div>
+
+      <div class="form-footer">
+        <div>
+          <span><i class="fas fa-phone-alt"></i> Contact us: TIIDELAB</span>
+          <div class="block blue-block"></div>
+          <div class="block green-block"></div>
+          <div class="block yellow-block"></div>
+          <div class="block purple-block"></div>
+        </div>
+        <input type="submit" value="Submit">
+      </div>
     </form>
   </div>
+
+  <footer>
+    &copy; 2023 TIIDELAB. All rights reserved.
+  </footer>
+
+  <!-- Link Bootstrap and Font Awesome JavaScript libraries -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Initialize Font Awesome icons -->
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
 </body>
 </html>
