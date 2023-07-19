@@ -3,318 +3,305 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Reservation Form</title>
-  <!-- Link Bootstrap CSS for styling -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Link Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Innovation Squad Hotel</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
       margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #fff;
+
+
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo h1 {
+      margin: 0;
+    }
+
+    .navbar {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .navbar li {
+      margin-left: 20px;
+    }
+
+    .navbar li:first-child {
+      margin-left: 0;
+    }
+
+    .navbar li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    .navbar li a:hover {
+      color: #purple; /* Change to your desired purple color */
+    }
+
+    main {
+      color: white;
+      padding: 40px;
+      text-align: center;
+      background-color: grey;
+    }
+
+
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .image-slider {
+      position: relative;
+      overflow: hidden;
+      max-height: 400px;
+    }
+
+    .image-slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    /* Parallax effect */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 500px;
+    }
+
+    /* Modern fonts */
+    h2, h3 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: bold;
+    }
+
+    /* Animated button */
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #666;
+    }
+
+    /* Testimonials section */
+    .testimonials {
+      text-align: center;
+    }
+
+    /* Social media icons */
+    .social-icons {
+      list-style: none;
       padding: 0;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      background-color: #f9f9f9;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #007bff;
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-weight: bold;
-      color: #333;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-    }
-
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="tel"]:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #007bff;
-    }
-
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background: url("down-arrow.png") no-repeat right center;
-    }
-
-    textarea {
-      resize: vertical;
-      height: 100px;
-    }
-
-    input[type="submit"] {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #0056b3;
-    }
-
-    input[type="submit"]::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0.2);
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-    }
-
-    input[type="submit"]:hover::before {
-      transform: translateX(0);
-    }
-
-    /* Additional CSS for enhanced design and animations */
-
-    .form-group {
-      position: relative;
-    }
-
-    .form-group label {
-      position: absolute;
-      top: -10px;
-      left: 10px;
-      background-color: #fff;
-      padding: 0 5px;
-      color: #007bff;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      border-color: #007bff;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: #0056b3;
-    }
-
-    .form-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #f0f0f0;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    .form-footer span {
-      color: #007bff;
-    }
-
-    .hotel-image {
-      background-image: url('hotel-image.jpg'); /* Replace with your hotel image URL */
-      background-size: cover;
-      background-position: center;
-      height: 300px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .block {
-      width: 80px;
-      height: 80px;
-      border-radius: 5px;
-      margin: 10px;
+    .social-icons li {
       display: inline-block;
+      margin: 0 10px;
     }
 
-    .blue-block {
-      background-color: #007bff;
-    }
-
-    .green-block {
-      background-color: #00a852;
-    }
-
-    .yellow-block {
-      background-color: #ffc107;
-    }
-
-    .purple-block {
-      background-color: #6f42c1;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    .container {
-      animation: fadeIn 1s;
-    }
-
-    /* CNN-inspired design */
-    header {
-      background-color: #007bff;
-      padding: 10px;
-      color: #fff;
-      text-align: center;
-      border-radius: 10px 10px 0 0;
-      margin-bottom: 20px;
-    }
-
-    header h2 {
+    .social-icons a {
+      color: #333;
+      text-decoration: none;
       font-size: 24px;
-      margin-bottom: 5px;
     }
 
-    header p {
-      font-size: 14px;
-      margin-bottom: 0;
+    /* Responsive Styles */
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar {
+        margin-top: 20px;
+      }
+
+      .navbar li {
+        margin: 10px 0;
+      }
+
+      main {
+        padding: 20px;
+
+      }
+    /* Mobile-first approach */
+    @media only screen and (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navbar {
+        margin-top: 20px;
+      }
+
+      .navbar li {
+        margin: 10px 0;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .image-slider img {
+        height: 250px;
+      }
+
+      .parallax {
+        height: 300px;
+      }
     }
 
-    footer {
-      background-color: #007bff;
-      padding: 10px;
-      color: #fff;
-      text-align: center;
-      border-radius: 0 0 10px 10px;
-      margin-top: 20px;
+    /* Tablet and larger screens */
+    @media only screen and (min-width: 601px) {
+      .image-slider img {
+        height: 400px;
+      }
+
+      .parallax {
+        height: 500px;
+      }
+
+      /* Larger font for headings on bigger screens */
+      h2, h3 {
+        font-size: 36px;
+      }
+
+      /* Adjust the number of testimonials per row */
+      .testimonials {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
+
+      .testimonial {
+        max-width: 350px;
+        margin: 10px;
+      }
     }
 
-    /* Hover effects */
-    .block {
-      transition: transform 0.3s ease;
-    }
-
-    .block:hover {
-      transform: scale(1.1);
-    }
-
-    input[type="submit"] {
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-    }
 
   </style>
 </head>
 <body>
   <header>
-    <h2>Welcome to Our Hotel</h2>
-    <p>Book your stay now and experience luxury like never before!</p>
+    <nav>
+      <div class="container">
+        <div class="logo">
+          <h1>Innovation Squad Hotel</h1>
+        </div>
+        <ul class="navbar">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
-  <div class="container">
-    <h1>Hotel Reservation Form</h1>
+  <main>
+    <div id="home" class="parallax" style="background-image: url('https://th.bing.com/th/id/R.f27ccfae2fdb9d111445d7b10e103c75?rik=DD%2bv2lofPJGJGA&pid=ImgRaw&r=0');">
+        <h2>WELCOME TO THE INNOVATION SQUAD</h2>
+        <br>
+        <p>created by febechukwu owen</p>
 
-    <div class="hotel-image"></div>
+    </div>
 
-    <form id="reservation-form" method="post">
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
+      <div id="about">
+          <h2>About us:</h2>
+          <br>
+          <p>At Innovation Squad Hotel, we are dedicated to redefining the classic hotel experience and delivering unparalleled hospitality. Nestled in the heart of the city, our hotel offers a perfect blend of modern sophistication and timeless elegance. Whether you are traveling for business or leisure, our team of committed professionals is here to ensure your stay is nothing short of exceptional</p>
+          <h3>Accommodations</h3>
+          <p>Step into our well-appointed rooms and suites, designed to provide ultimate comfort and relaxation. Each room boasts contemporary furnishings, plush bedding, and state-of-the-art amenities to cater to your every need. Whether you choose a standard room or a luxurious suite, you can expect a restful stay in a setting that exudes refinement.</p>
+          <h3>Dining</h3>
+          <p>Indulge your senses in our diverse culinary offerings. The Innovation Squad Hotel features a range of dining options, from casual cafes to elegant restaurants. Our talented chefs skillfully prepare a variety of cuisines using the finest ingredients, ensuring a delightful dining experience for every palate.</p>
+          <h3>Facilities</h3>
+          <p>Our hotel offers an array of facilities to enhance your stay. Take a refreshing dip in the rooftop swimming pool, enjoy a revitalizing workout at the fully-equipped fitness center, or unwind with a soothing massage at our spa. For the business traveler, we offer well-equipped meeting and conference rooms, complemented by our efficient business services.</p>
+          <h3>Hospitality</h3>
+          <p>At the heart of our hotel is a commitment to exceptional hospitality. From the moment you step through our doors until your departure, our attentive staff will cater to your every need, ensuring a seamless and unforgettable stay.</p>
+          <br>
+          <p>Experience the charm of classic hospitality with a touch of innovation at Innovation Squad Hotel. Whether you're here for business or leisure, we promise an experience that will exceed your expectations and leave you with cherished memories. Book your stay with us and embark on an extraordinary journey of luxury and comfort.</p>
+      </div>
+      <div class="image-slider">
+      <!-- Add your images for the slider here -->
+      <img src='https://th.bing.com/th/id/R.2a8323dc91f081fef93e097c20641b39?rik=RYMNlJHfGg7TpA&pid=ImgRaw&r=0'>
       </div>
 
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
-
-      <div class="form-group">
-        <label for="check-in">Check-In Date</label>
-        <input type="date" id="check-in" name="check-in" required>
-      </div>
-
-      <div class="form-group">
-        <label for="check-out">Check-Out Date</label>
-        <input type="date" id="check-out" name="check-out" required>
-      </div>
-
-      <div class="form-group">
-        <label for="room-type">Room Type</label>
-        <select id="room-type" name="room-type" required>
-          <option value="" disabled selected>Select room type</option>
-          <option value="single">Single Room</option>
-          <option value="double">Double Room</option>
-          <option value="suite">Suite</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="special-requests">Special Requests <i class="fas fa-info-circle" data-toggle="tooltip" title="Any specific requirements or preferences?"></i></label>
-        <textarea id="special-requests" name="special-requests" placeholder="Enter any special requests..."></textarea>
-      </div>
-
-      <div class="form-footer">
-        <div>
-          <span><i class="fas fa-phone-alt"></i> Contact us: TIIDELAB</span>
-          <div class="block blue-block"></div>
-          <div class="block green-block"></div>
-          <div class="block yellow-block"></div>
-          <div class="block purple-block"></div>
+    <div class="parallax" style="background-image: url('https://th.bing.com/th/id/R.f27ccfae2fdb9d111445d7b10e103c75?rik=DD%2bv2lofPJGJGA&pid=ImgRaw&r=0');">
+       <div class="parallax-content">
+          <h2>Welcome to Our Luxurious Hotel</h2>
+          <p>Experience elegance and comfort at Innovation Squad Hotel, where luxury meets innovation.</p>
+          <a href="#about" class="button">Learn More</a>
         </div>
-        <input type="submit" value="Submit">
+    </div>
+
+
+      <!-- Testimonials section -->
+      <div class="testimonials">
+        <h2>What Our Guests Say</h2>
+        <p>Read what our happy guests have to say about their stay at Innovation Squad Hotel.</p>
+
+        <div class="testimonial">
+          <blockquote>
+            "Absolutely amazing experience! The staff was incredibly friendly and accommodating. The room was
+            spacious and luxurious, and the views from the rooftop pool were breathtaking. I will definitely be
+            returning!"
+          </blockquote>
+          <cite>- John Doe</cite>
+        </div>
+
+        <div class="testimonial">
+          <blockquote>
+            "Innovation Squad Hotel exceeded all expectations. The attention to detail and personalized service
+            made our stay unforgettable. We loved every moment of our time here and can't wait to come back."
+          </blockquote>
+          <cite>- Jane Smith</cite>
+        </div>
       </div>
-    </form>
-  </div>
+      <div id="contact">
+          <h2>Contact Us</h2>
+          <p>TIIDELAB</p>
+      </div>
+  </main>
 
   <footer>
-    &copy; 2023 TIIDELAB. All rights reserved.
+    <p>&copy; 2023 Innovation Squad Hotel. All rights reserved.</p>
   </footer>
-
-  <!-- Link Bootstrap and Font Awesome JavaScript libraries -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- Initialize Font Awesome icons -->
-  <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-  </script>
 </body>
 </html>
